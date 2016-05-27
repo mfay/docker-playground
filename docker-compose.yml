@@ -14,9 +14,28 @@ services:
   weba:
     build: ./web 
     restart: always
+    env_file: ./web/.env
+    links:
+      - redis
+    depends_on:
+      - redis
   webb:
     build: ./web 
     restart: always
+    env_file: ./web/.env
+    links:
+      - redis
+    depends_on:
+      - redis
   webc:
     build: ./web 
     restart: always
+    env_file: ./web/.env
+    links:
+      - redis
+    depends_on:
+      - redis
+  redis:
+    image: redis:3.2
+    ports:
+      - "6379:6379"
