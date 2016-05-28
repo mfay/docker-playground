@@ -1,0 +1,7 @@
+This is a simple example of a load balanced system using Docker and Docker Compose.  The system uses haproxy, nodejs (express), and redis.  Redis is used to keep session state across the load balanced webservers.
+
+Start the system with the following command:
+docker-compose up -d
+
+Scale up the number of web servers to 5 with the following command:
+docker-compose scale web=5

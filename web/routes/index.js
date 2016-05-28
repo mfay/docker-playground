@@ -5,9 +5,9 @@ var redis = require('redis');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var data = { title: 'Express on: ' + os.hostname(), username: "anonymous" };
+  var data = { title: 'Container: ' + os.hostname(), username: "anonymous" };
   if (req.session && req.session.username) {
-    data = { title: 'Express on: ' + os.hostname(), username: req.session.username };
+    data = { title: 'Container: ' + os.hostname(), username: req.session.username };
   }
   res.render('index', data);
 });

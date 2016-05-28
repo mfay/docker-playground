@@ -1,33 +1,15 @@
 version: '2'
 services:
   proxy:
-    build: ./proxy
-    image: mfay/haproxy:1.1 
+    image: dockercloud/haproxy:1.2.1
     ports:
       - "80:80"
-      - "70:70"
     links:
-      - weba 
-      - webb 
-      - webc 
+      - web 
     restart: always
-  weba:
-    build: ./web 
-    restart: always
-    env_file: ./web/.env
-    links:
-      - redis
-    depends_on:
-      - redis
-  webb:
-    build: ./web 
-    restart: always
-    env_file: ./web/.env
-    links:
-      - redis
-    depends_on:
-      - redis
-  webc:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  web:
     build: ./web 
     restart: always
     env_file: ./web/.env
@@ -37,5 +19,5 @@ services:
       - redis
   redis:
     image: redis:3.2
-    ports:
-      - "6379:6379"
+    #ports:
+    #  - "6379:6379"
