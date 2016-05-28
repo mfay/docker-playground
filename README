@@ -1,5 +1,10 @@
 This is a simple example of a load balanced system using Docker and Docker Compose.  The system uses haproxy, nodejs (express), and redis.  Redis is used to keep session state across the load balanced webservers.
 
+Build the webserver image with the following command:
+docker-compose build
+
+This will create the image for the webserver.  You will need to run this any time changes are made to the web application source code.
+
 Start the system with the following command:
 docker-compose up -d
 
